@@ -19,7 +19,6 @@ st.set_page_config(page_title='Computer Vision',
 hide_menu_style = """
     <style>
         MainMenu {visibility: hidden;}
-        
          div[data-testid="stHorizontalBlock"]> div:nth-child(1)
         {  
             border : 2px solid #doe0db;
@@ -40,7 +39,6 @@ hide_menu_style = """
             font-weight:bold;
             color:black;
             padding: 25px;
-            
         }
     </style>
     """
@@ -81,7 +79,6 @@ if choice == 'About the Application':
     st.markdown(
         """Object detection and tracking using **YOLOv8** and **Streamlit** for GUI and user inputs."""
     )
-    
     st.image("media/Home_gif.gif", use_column_width=True)
 
 if choice == 'Run Object Detection - Image':
@@ -154,10 +151,12 @@ if choice == 'Run Object Detection - Video':
         clip = cv2.VideoCapture(tfile.name)
         model = YOLO('best.onnx', task='detect')
         track_data_vid = {}
+        
         while True:
             ret, frame = clip.read()
             if not ret:
                 number_of_classes=[]
+                
                 for value in track_data_vid.values():
                     number_of_classes.append(value)
                 
@@ -196,6 +195,7 @@ if choice == 'Run Object Detection - Video':
                     cv2.rectangle(frame, (x, y), (x2, y2), (255, 144, 50), 2)
                     cv2.rectangle(frame, (x, y), c2, (255, 144, 50), -1, cv2.LINE_AA)
                     cv2.putText(frame, f'{classes_file[cls]}', (x, y - 10), 0, 0.5, (0, 0, 0), 1, lineType = cv2.LINE_AA)
+                    
                     screen.image(frame,use_column_width=True, channels='BGR')       
     
     if st.sidebar.button('Stop Inference', type='secondary'):
@@ -214,6 +214,7 @@ if choice == 'Run Object Detection - Video':
         st.plotly_chart(fig)
         st.download_button('Download Data', data=df.to_csv(index=False).encode('utf-8'), file_name='data.csv', mime='text/csv')
         os.remove(r'track_data_vid.json')
+        
         with open('track_data_vid.json', 'w') as fp:
             json.dump({}, fp)
             
