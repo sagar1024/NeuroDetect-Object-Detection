@@ -30,40 +30,38 @@ Ensure the following are installed on your system:
 
 ### Steps to Run
 
-Clone the repository:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/sagar1024/NeuroDetect-Object-Detection-using-Streamlit.git
 cd NeuroDetect-Object-Detection-using-Streamlit
 ```
 
-Launch the Streamlit app:
+2. Launch the Streamlit app:
 
 ```bash
 streamlit run app.py
 ```
 
-Access the app in your browser at http://localhost:8501.
+3. Access the app in your browser at http://localhost:8501.
 
 ## 🛠 How the Project Works
 
-#### Image Mode:
+### Image Mode:
 
-Upload an image file.
+1. Upload an image file.
 
-Perform object detection for selected classes.
+2. Perform object detection for selected classes.
 
-Visualize results directly on the dashboard.
+3. Visualize results directly on the dashboard.
 
-#### Video Mode:
+### Video Mode:
 
-Upload a video file.
+1. Upload a video file.
 
-Select object classes and confidence threshold from the sidebar.
+2. Select object classes and confidence threshold from the sidebar.
 
-View detections in real-time, with bounding boxes drawn on detected objects.
-
-Download detection data as a CSV file for further analysis.
+3. View detections in real-time, with bounding boxes drawn on detected objects.
 
 ## Dashboard Features:
 
