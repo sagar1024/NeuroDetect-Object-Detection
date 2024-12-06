@@ -1,7 +1,6 @@
-streamlit
-plotly
 numpy
 pandas
+streamlit
+plotly
 opencv-python
-numpy
 ultralytics

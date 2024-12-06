@@ -72,7 +72,7 @@ st.markdown(sub_title,
 screen = st.empty()
 tfile = tempfile.NamedTemporaryFile(delete=False)
 
-menu = ['About the Application','Run Object Detection - Image','Run Object Detection - Video']
+menu = ['About the Application', 'Run Object Detection - Image', 'Run Object Detection - Video']
 choice = st.sidebar.selectbox("Dashboard", menu)
 
 if choice == 'About the Application':
@@ -80,13 +80,12 @@ if choice == 'About the Application':
         """Object detection and tracking using **YOLOv8** and **Streamlit** for GUI and user inputs."""
     )
     st.image("media/Home_gif.gif", use_column_width=True)
-
+    
 if choice == 'Run Object Detection - Image':
 
     with open(r'classes.txt') as f:
         classes_file = f.read()
         classes_file = classes_file.split("\n")
-        
     st.session_state.track_data_img = {}
     class_list = st.sidebar.multiselect(label='Class List', placeholder='Select classes to detect', options=classes_file, default=['person'])
     confidence = st.sidebar.slider('Choose Confidence', min_value=0.0, max_value=1.0, value=0.5, step=0.1)
@@ -103,7 +102,6 @@ if choice == 'Run Object Detection - Image':
         conf = np.array(result.boxes.conf)
         bboxes = np.array(result.boxes.xyxy.cpu(), dtype="int")
         classes = np.array(result.boxes.cls.cpu(), dtype="int")
-        
         for bbox, cls, conf_cent, id in zip(bboxes, classes, conf, ids):
             if (classes_file[cls] in class_list) and (conf_cent >= confidence):
                 id = int(id)
@@ -115,26 +113,21 @@ if choice == 'Run Object Detection - Image':
                 y2 = int(y2)
                 text_size = cv2.getTextSize(f'{classes_file[cls]}', 0, fontScale=1, thickness=2)[0]
                 c2 = x + text_size[0], y - text_size[1] - 3
-                
                 cv2.rectangle(img, (x, y), (x2, y2), (255, 144, 50), 2)
                 cv2.rectangle(img, (x, y), c2, (255, 144, 50), -1, cv2.LINE_AA)
                 cv2.putText(img, f'{classes_file[cls]}', (x, y - 10), 0, 0.5, (0, 0, 0), 2, lineType = cv2.LINE_AA)
-        
         st.subheader('Inference')
         st.image(img, use_column_width=True, channels='RGB')
-        
         number_of_classes_img=[]
         for value in st.session_state.track_data_img.values():
             number_of_classes_img.append(value)
-        
         data = pd.DataFrame({'NUMBER OF DETECTIONS':number_of_classes_img})
         df = data['NUMBER OF DETECTIONS'].value_counts().reset_index()
         df.columns = ['Detection(s)', 'Number of detections']
         fig = px.bar(df,x='Detection(s)',y='Number of detections',color='Detection(s)')
-        
         st.plotly_chart(fig)
         st.download_button('Download Data', data=df.to_csv(index=False).encode('utf-8'), file_name='data.csv', mime='text/csv')
-
+        
 if choice == 'Run Object Detection - Video':
 
     with open(r'classes.txt') as f:
@@ -145,30 +138,24 @@ if choice == 'Run Object Detection - Video':
     confidence = st.sidebar.slider('Choose Confidence', min_value=0.0, max_value=1.0, value=0.5, step=0.1)
     video_file = st.sidebar.file_uploader('Upload Video Here', type= ['mp4','webm','avi','mov'])
     run = st.sidebar.button('Run', type='primary')
-    
     if run:
         tfile.write(video_file.read())
         clip = cv2.VideoCapture(tfile.name)
         model = YOLO('best.onnx', task='detect')
         track_data_vid = {}
-        
         while True:
             ret, frame = clip.read()
             if not ret:
                 number_of_classes=[]
-                
                 for value in track_data_vid.values():
                     number_of_classes.append(value)
-                
                 data = pd.DataFrame({'NUMBER OF DETECTIONS':number_of_classes})
                 df = data['NUMBER OF DETECTIONS'].value_counts().reset_index()
                 df.columns = ['Detection(s)', 'Number of detections']
                 fig = px.bar(df,x='Detection(s)',y='Number of detections',color='Detection(s)')
-                
                 st.plotly_chart(fig)
                 st.download_button('Download Data', data=df.to_csv(index=False).encode('utf-8'), file_name='data.csv', mime='text/csv')
                 break
-            
             results = model.track(frame, persist=True, show=False)
             result = results[0]
             ids = np.array(result.boxes.id)
@@ -180,10 +167,8 @@ if choice == 'Run Object Detection - Video':
                 if (classes_file[cls] in class_list) and (conf_cent >= confidence):
                     id = int(id)
                     track_data_vid[id]= classes_file[cls]
-                    
                     with open('track_data_vid.json', 'w+') as fp:
                         json.dump(track_data_vid, fp)
-                    
                     x, y, x2, y2 = bbox
                     x = int(x)
                     y = int(y)
@@ -191,30 +176,22 @@ if choice == 'Run Object Detection - Video':
                     y2 = int(y2)
                     text_size = cv2.getTextSize(f'{classes_file[cls]}', 0, fontScale=1, thickness=2)[0]
                     c2 = x + text_size[0], y - text_size[1] - 3
-                    
                     cv2.rectangle(frame, (x, y), (x2, y2), (255, 144, 50), 2)
                     cv2.rectangle(frame, (x, y), c2, (255, 144, 50), -1, cv2.LINE_AA)
                     cv2.putText(frame, f'{classes_file[cls]}', (x, y - 10), 0, 0.5, (0, 0, 0), 1, lineType = cv2.LINE_AA)
-                    
                     screen.image(frame,use_column_width=True, channels='BGR')       
-    
     if st.sidebar.button('Stop Inference', type='secondary'):
         with open('track_data_vid.json', 'r+') as fp:
                 track_info = json.load(fp)
-        
         number_of_classes=[]
         for value in track_info.values():
             number_of_classes.append(value)
-        
         data = pd.DataFrame({'NUMBER OF DETECTIONS':number_of_classes})
         df = data['NUMBER OF DETECTIONS'].value_counts().reset_index()
         df.columns = ['Detection(s)', 'Number of detections']
         fig = px.bar(df,x='Detection(s)',y='Number of detections',color='Detection(s)')
-        
         st.plotly_chart(fig)
         st.download_button('Download Data', data=df.to_csv(index=False).encode('utf-8'), file_name='data.csv', mime='text/csv')
         os.remove(r'track_data_vid.json')
-        
         with open('track_data_vid.json', 'w') as fp:
             json.dump({}, fp)
-            

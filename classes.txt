@@ -1,4 +1,6 @@
-car
-cat
 dog
 person
+cat
+okada
+car
+maruwa
