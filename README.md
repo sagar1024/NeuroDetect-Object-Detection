@@ -76,20 +76,19 @@ Interactive charts and download options for detection statistics.
 
 ## 💡 Challenges Faced and How We Overcame Them
 
-Video Playback Issues:
-
+1. Video Playback Issues:
 Initially faced problems with autoplay functionality for embedded videos. Resolved by converting the demo video to a GIF and using st.image for seamless playback.
 
-Handling Large Files:
+2. Handling Large Files:
 Uploading large videos/images caused performance lags. Mitigated this by resizing input files dynamically using OpenCV.
 
-Real-Time Detection Rendering:
+3. Real-Time Detection Rendering:
 Streamlit's default rendering posed challenges for displaying real-time detections. Solved this by leveraging Streamlit's st.image and efficiently updating frames.
 
-Data Storage and Management:
-Managing detection data for multiple runs required a structured approach. Addressed by using temporary JSON files for intermediate storage and ensuring clean-up post-inference.
-
 ## 🌟 Future Enhancements
-Add support for additional object detection models.
-Enable real-time webcam feed for live detections.
-Expand analytics capabilities with more advanced visualization tools.
+
+1. Add support for additional object detection models.
+
+2. Enable real-time webcam feed for live detections.
+
+3. Expand analytics capabilities with more advanced visualization tools.
