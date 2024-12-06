@@ -32,13 +32,16 @@ Ensure the following are installed on your system:
 
 Clone the repository:
 
+```bash
 git clone https://github.com/sagar1024/NeuroDetect-Object-Detection-using-Streamlit.git
-
 cd computer-vision-dashboard
+```
 
 Launch the Streamlit app:
 
+```bash
 streamlit run app.py
+```
 
 Access the app in your browser at http://localhost:8501.
 
