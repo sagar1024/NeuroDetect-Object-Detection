@@ -34,7 +34,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/sagar1024/NeuroDetect-Object-Detection-using-Streamlit.git
-cd computer-vision-dashboard
+cd NeuroDetect-Object-Detection-using-Streamlit
 ```
 
 Launch the Streamlit app:
