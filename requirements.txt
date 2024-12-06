@@ -4,3 +4,4 @@ streamlit
 plotly
 opencv-python
 ultralytics
+

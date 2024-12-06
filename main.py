@@ -195,3 +195,5 @@ if choice == 'Run Object Detection - Video':
         os.remove(r'track_data_vid.json')
         with open('track_data_vid.json', 'w') as fp:
             json.dump({}, fp)
+            
+            
