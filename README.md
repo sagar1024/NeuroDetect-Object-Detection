@@ -1,4 +1,4 @@
-# Computer Vision Dashboard with YOLOv8 and Streamlit
+# NeuroDetect - Object Detection using YOLOv8 and Streamlit
 
 A streamlined application for object detection and tracking using YOLOv8, integrated with an interactive dashboard powered by Streamlit. This project combines cutting-edge object detection algorithms with an intuitive interface to provide real-time analytics for images and videos.
 
