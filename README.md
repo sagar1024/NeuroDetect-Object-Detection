@@ -32,7 +32,7 @@ Ensure the following are installed on your system:
 
 Clone the repository:
 
-git clone https://github.com/your-username/computer-vision-dashboard.git
+git clone https://github.com/sagar1024/NeuroDetect-Object-Detection-using-Streamlit.git
 
 cd computer-vision-dashboard
 
