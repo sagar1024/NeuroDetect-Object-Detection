@@ -23,10 +23,10 @@ This project offers:
 Ensure the following are installed on your system:
 - Python 3.8+
 - Streamlit
-- OpenCV
-- Ultralytics (YOLOv8)
 - Plotly
 - PIL
+- OpenCV
+- Ultralytics (YOLOv8)
 
 ### Steps to Run
 
