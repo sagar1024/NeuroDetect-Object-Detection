@@ -47,11 +47,13 @@ Access the app in your browser at http://localhost:8501.
 
 ## 🛠 How the Project Works
 
-About Section:
+#### Image Mode:
 
-Explains the purpose of the project and its functionalities.
+Upload an image file.
 
-Includes an autoplay video or GIF showcasing the application.
+Perform object detection for selected classes.
+
+Visualize results directly on the dashboard.
 
 #### Video Mode:
 
@@ -62,14 +64,6 @@ Select object classes and confidence threshold from the sidebar.
 View detections in real-time, with bounding boxes drawn on detected objects.
 
 Download detection data as a CSV file for further analysis.
-
-#### Image Mode:
-
-Upload an image file.
-
-Perform object detection for selected classes.
-
-Visualize results directly on the dashboard.
 
 ## Dashboard Features:
 
