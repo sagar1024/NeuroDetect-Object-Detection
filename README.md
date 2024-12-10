@@ -12,8 +12,7 @@ Object detection and tracking are critical components in computer vision with ap
 ### How This Project Solves It
 This project offers:
 1. **Ease of Use**: A clean, intuitive dashboard for uploading videos or images, selecting object classes to detect, and visualizing results.
-2. **Real-Time Analytics**: Displays detection results, including bounding boxes, class labels, and counts.
-3. **Interactivity**: Provides options to download detection data for further analysis, making it ideal for users without extensive technical knowledge.
+2. **Interactivity**: Provides options to download detection data for further analysis, making it ideal for users without extensive technical knowledge.
 
 ---
 
