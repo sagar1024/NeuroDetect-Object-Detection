@@ -4,7 +4,7 @@ A streamlined application for object detection and tracking using YOLOv8, integr
 
 ---
 
-## 📖 About the Project
+## About the Project
 
 ### Problem Statement
 Object detection and tracking are critical components in computer vision with applications ranging from surveillance systems to industrial automation. However, existing tools often lack user-friendly interfaces and require significant technical expertise to operate.
@@ -14,7 +14,7 @@ This project offers:
 1. **Ease of Use**: A clean, intuitive dashboard for uploading videos or images, selecting object classes to detect, and visualizing results.
 2. **Interactivity**: Provides options to download detection data for further analysis, making it ideal for users without extensive technical knowledge.
 
-## 🚀 How to Run the Project
+## How to Run the Project
 
 ### Prerequisites
 Ensure the following are installed on your system:
@@ -42,7 +42,7 @@ streamlit run app.py
 
 3. Access the app in your browser at http://localhost:8501.
 
-## 🛠 How the Project Works
+## How the Project Works
 
 ### Image Mode:
 
@@ -66,7 +66,7 @@ Real-time visualizations of detected objects.
 
 Interactive charts and download options for detection statistics.
 
-## 💡 Challenges Faced and How We Overcame Them
+## Challenges Faced and How We Overcame Them
 
 1. Video Playback Issues:
 Initially faced problems with autoplay functionality for embedded videos. Resolved by converting the demo video to a GIF and using st.image for seamless playback.
@@ -77,10 +77,11 @@ Uploading large videos/images caused performance lags. Mitigated this by resizin
 3. Real-Time Detection Rendering:
 Streamlit's default rendering posed challenges for displaying real-time detections. Solved this by leveraging Streamlit's st.image and efficiently updating frames.
 
-## 🌟 Future Enhancements
+## Future Enhancements
 
 1. Add support for additional object detection models.
 
 2. Enable real-time webcam feed for live detections.
 
 3. Expand analytics capabilities with more advanced visualization tools.
+
