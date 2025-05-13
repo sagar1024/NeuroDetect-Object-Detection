@@ -14,8 +14,6 @@ This project offers:
 1. **Ease of Use**: A clean, intuitive dashboard for uploading videos or images, selecting object classes to detect, and visualizing results.
 2. **Interactivity**: Provides options to download detection data for further analysis, making it ideal for users without extensive technical knowledge.
 
----
-
 ## 🚀 How to Run the Project
 
 ### Prerequisites
